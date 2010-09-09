@@ -1,0 +1,78 @@
+NAME
+    PSGI::OR::CGI - Write a PSGI app that also runs as CGI
+
+VERSION
+    $Id: README,v 0.1 2010/09/09 07:31:27 dankogai Exp dankogai $
+
+SYNOPSIS
+      #!/usr/bin/env perl
+      # printenv.(psgi|cgi)
+      use strict;
+      use warnings;
+      use Data::Dumper;
+      use PSGI::OR::CGI;
+  
+      my $app = sub {
+        my $env = shift;
+        return [ 200, [ 'Content-Type' => 'text/plain' ], [ Dumper($env) ] ];
+      };
+  
+      PSGI::OR::CGI->run($app);
+
+EXPORT
+    None.
+
+METHODS
+  PSGI::OR::CGI->run($app)
+    If CGI, prints response accordingly to PSGI. If PSGI, immediately
+    returns $app
+
+    It checks the presense of $ENV{GATEWAY_INTERFACE} to check if the script
+    is invoked as PSGI or CGI (or mod_perl Registry which also sets this
+    environment variable).
+
+AUTHOR
+    Dan Kogai, "<dankogai+cpan at gmail.com>"
+
+BUGS
+    Please report any bugs or feature requests to "bug-psgi-or-cgi at
+    rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=PSGI-OR-CGI>. I will be
+    notified, and then you'll automatically be notified of progress on your
+    bug as I make changes.
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc PSGI::OR::CGI
+
+    You can also look for information at:
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=PSGI-OR-CGI>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/PSGI-OR-CGI>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/PSGI-OR-CGI>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/PSGI-OR-CGI/>
+
+ACKNOWLEDGEMENTS
+    PSGI, PLACK
+
+LICENSE AND COPYRIGHT
+    Copyright 2010 Dan Kogai.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
+
+    See http://dev.perl.org/licenses/ for more information.
+
