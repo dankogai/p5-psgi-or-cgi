@@ -2,7 +2,7 @@ NAME
     PSGI::OR::CGI - Write a PSGI app that also runs as CGI
 
 VERSION
-    $Id: README,v 0.1 2010/09/09 07:31:27 dankogai Exp dankogai $
+    $Id: README,v 0.1 2010/09/09 07:31:27 dankogai Exp $
 
 SYNOPSIS
       #!/usr/bin/env perl

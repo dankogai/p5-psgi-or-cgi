@@ -1,11 +1,11 @@
 #
-# $Id: CGI.pm,v 0.1 2010/09/09 07:31:27 dankogai Exp dankogai $
+# $Id: CGI.pm,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
 #
 package PSGI::OR::CGI;
 use warnings;
 use strict;
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 0.1 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%02d", q$Revision: 0.2 $ =~ /(\d+)/g;
 
 sub run {
     my $class = shift;
@@ -27,7 +27,7 @@ sub _respond {
         close $fd;
     }
     else {
-        print join "\n", @{ $res->[2] };
+        print join "", @{ $res->[2] };
     }
 }
 
@@ -40,7 +40,7 @@ PSGI::OR::CGI - Write a PSGI app that also runs as CGI
 
 =head1 VERSION
 
-$Id: CGI.pm,v 0.1 2010/09/09 07:31:27 dankogai Exp dankogai $
+$Id: CGI.pm,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
 
 =head1 SYNOPSIS
 

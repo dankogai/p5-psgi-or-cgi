@@ -1,7 +1,11 @@
 #
-# $Id: Changes,v 0.1 2010/09/09 07:31:27 dankogai Exp dankogai $
+# $Id: Changes,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
 # Revision history for PSGI-OR-CGI
-$Revision: 0.1 $ $Date: 2010/09/09 07:31:27 $
+$Revision: 0.2 $ $Date: 2010/09/09 07:52:02 $
+! lib/PSGI/OR/CGI.pm
+  More PSGI compliant
+
+0.01 2010/09/09 07:31:27
 + *
   First release
 
