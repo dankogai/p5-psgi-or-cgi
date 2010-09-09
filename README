@@ -2,7 +2,7 @@ NAME
     PSGI::OR::CGI - Write a PSGI app that also runs as CGI
 
 VERSION
-    $Id: README,v 0.1 2010/09/09 07:31:27 dankogai Exp $
+    $Id: README,v 0.2 2010/09/09 09:21:14 dankogai Exp dankogai $
 
 SYNOPSIS
       #!/usr/bin/env perl
@@ -18,6 +18,7 @@ SYNOPSIS
       };
   
       PSGI::OR::CGI->run($app);
+      # or Plack::Loader->auto->run($app) if you have Plack installed
 
 EXPORT
     None.
@@ -30,6 +31,17 @@ METHODS
     It checks the presense of $ENV{GATEWAY_INTERFACE} to check if the script
     is invoked as PSGI or CGI (or mod_perl Registry which also sets this
     environment variable).
+
+  use Plack::Loader; # instead if you have Plack installed
+    If you have Plack installed, you should use Plack::Loader instead as:
+
+      use Plack::Loader;
+      my $app = sub {
+        ...
+      };
+      Plack::Loader->auto($app);
+
+    It is more comprehensive.
 
 AUTHOR
     Dan Kogai, "<dankogai+cpan at gmail.com>"
@@ -65,7 +77,7 @@ SUPPORT
         <http://search.cpan.org/dist/PSGI-OR-CGI/>
 
 ACKNOWLEDGEMENTS
-    PSGI, PLACK
+    PSGI, Plack, Plack::Loader
 
 LICENSE AND COPYRIGHT
     Copyright 2010 Dan Kogai.

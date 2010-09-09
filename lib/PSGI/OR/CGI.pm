@@ -1,11 +1,11 @@
 #
-# $Id: CGI.pm,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
+# $Id: CGI.pm,v 0.3 2010/09/09 09:21:14 dankogai Exp dankogai $
 #
 package PSGI::OR::CGI;
 use warnings;
 use strict;
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 0.2 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%02d", q$Revision: 0.3 $ =~ /(\d+)/g;
 
 sub run {
     my $class = shift;
@@ -40,7 +40,7 @@ PSGI::OR::CGI - Write a PSGI app that also runs as CGI
 
 =head1 VERSION
 
-$Id: CGI.pm,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
+$Id: CGI.pm,v 0.3 2010/09/09 09:21:14 dankogai Exp dankogai $
 
 =head1 SYNOPSIS
 
@@ -57,6 +57,7 @@ $Id: CGI.pm,v 0.2 2010/09/09 07:52:02 dankogai Exp dankogai $
   };
   
   PSGI::OR::CGI->run($app);
+  # or Plack::Loader->auto->run($app) if you have Plack installed
 
 =head1 EXPORT
 
@@ -72,6 +73,18 @@ If PSGI, immediately returns C<$app>
 It checks the presense of C<$ENV{GATEWAY_INTERFACE}> to check if the
 script is invoked as PSGI or CGI (or mod_perl Registry which also sets
 this environment variable).
+
+=head2 use Plack::Loader; # instead if you have Plack installed
+
+If you have L<Plack> installed, you should use L<Plack::Loader> instead as:
+
+  use Plack::Loader;
+  my $app = sub {
+    ...
+  };
+  Plack::Loader->auto($app);
+
+It is more comprehensive.
 
 =head1 AUTHOR
 
@@ -113,7 +126,7 @@ L<http://search.cpan.org/dist/PSGI-OR-CGI/>
 
 =head1 ACKNOWLEDGEMENTS
 
-L<PSGI>, L<PLACK>
+L<PSGI>, L<Plack>, L<Plack::Loader>
 
 =head1 LICENSE AND COPYRIGHT
 
